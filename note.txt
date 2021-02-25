@@ -1,0 +1,46 @@
+== 아나콘다 가상환경
+	1) 폴더 생성
+	2) 가상환경 생성
+	윈도우+r cmd + cd ‪C:\python\Anaconda3
+	python -m venv f:\workspace\pj9
+	폴더 3개 생성 scripts 폴더에 명령어들 있음
+	3) 가상환경 실행
+	cd script
+	activate
+	4) 가상환경 종료
+	deactivate
+
+== 파이참 가상환경
+폴더 위치 F:\workspace\pj3
+가상환경 위치 F:\workspace\pj3\venv
+base interpreter c:\python\Anaconda3\ptyhon.exe
+
+스크래피 설치
+pip install scrapy
+
+1) 스크래피 프로젝트 생성
+scrapy startproject 프로젝트명
+scrapy startproject scr1 # 같은 이름 폴더가 2개 생성
+2-1) 스파이더 생성
+cd scr1  # scrapy.cfg 파일이 있는 곳에서 명령어를 실행
+scrapy genspider 스파이더이름 수집할 도메인
+scrapy genspider test1 alexa.com/topsites
+2-2) 스파이더 생성
+scrapy genspider test2 movie.naver.com/movie/running/current.nhn
+2-3) 스파이더 생성
+scrapy genspider wiki wikibook.co.kr/list/
+# scr1.spiders.wiki 생성 확인
+
+3) 실행
+scrapy crawl 스파이더이름
+scrapy crawl test1
+scrapy crawl test1 --nolog  # 로그없이 실행
+--- scr1.spiders.test1 편집
+--- setting.py
+ROBOTSTXT_OBEY = False
+--- scr1.spiders.test1 편집
+메서드 get(), extract_first()
+    getall(), extract()
+scrapy crawl test1 -o alexa.json
+scrapy crawl test1 -o alexa.json --nolog
+scrapy crawl test1 -o alexa.csv --nolog
